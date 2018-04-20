@@ -23,8 +23,15 @@ public class ProjetVue {
         System.out.println("2)Membre");
         System.out.println("3)Projet");
         System.out.println("4)Quitter");
-        int choix = sc.nextInt();
-        return choix;
+        String choix = getMsg();
+        int chx = 0;
+        try {
+            chx = Integer.parseInt(choix);
+        } catch (NumberFormatException e) {
+            affMsg("Entrez un entier");
+        }
+
+        return chx;
     }
 
     public int sousMenu() {
@@ -34,11 +41,20 @@ public class ProjetVue {
         System.out.println("4)Liste");
         System.out.println("5)Supprimer");
         System.out.println("6)Retour");
-        int choix = sc.nextInt();
-        return choix;
+        String choix = getMsg();
+        int chx = 0;
+        try {
+            chx = Integer.parseInt(choix);
+        } catch (NumberFormatException e) {
+            affMsg("Entrez un entier");
+        }
+
+        return chx;
+
     }
 
     public Client encodeClient() {
+
         String nomC = getMsg("Nom du client : ");
         String tel = getMsg("Numéro de tel du client : ");
         String adresse = getMsg("Adresse du client : ");
@@ -63,6 +79,24 @@ public class ProjetVue {
         cli = encodeClient();
         Projet pj = new Projet(titre, dated, datef, cli);
         return pj;
+    }
+
+    public String encode(String msg) {
+        System.out.println(msg);
+        sc.nextLine();
+        String a = sc.nextLine();
+        System.out.println(a);
+        return a;
+
+    }
+
+    public String encode() {
+        String a = sc.nextLine();
+        System.out.println(a);
+        sc.nextLine();
+
+        return a;
+
     }
 
     public void affClient(Client cl) {
@@ -113,6 +147,14 @@ public class ProjetVue {
 
     }
 
+    /*
+    public Enseignant rechEnseignant() {
+
+        String matricule = getMessage("Matricule de l'enseignant à rechercher :");
+        Enseignant eRech = new Enseignant(matricule);
+        return eRech;
+    }
+     */
     public Membre formRechMembre() {
         String nomM = getMsg("Nom : ");
         String prenomM = getMsg("Prénom : ");
@@ -123,7 +165,6 @@ public class ProjetVue {
 
     public Projet formRechProjet() {
         String titre = getMsg("Titre : ");
-        
 
         return new Projet(titre);
 

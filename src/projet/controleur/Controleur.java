@@ -52,11 +52,14 @@ public class Controleur {
                             case 2:
                                 modifClient();
                                 break;
-                            case 3: //recherClient();
+                            case 3:
+                                rechercheClient();
                                 break;
-                            case 4: //listeClient();
+                            case 4:
+                                listeClient();
                                 break;
-                            case 5: //suppClient();
+                            case 5:
+                                supprimerClient();
                                 break;
                             case 6:
                                 pv.affMsg("Retour");
@@ -75,7 +78,7 @@ public class Controleur {
                             case 2:
                                 modifMembre();
                                 break;
-                            case 3: //recherMembre();
+                            case 3: //rechercheMembre();
                                 break;
                             case 4: //listeMembre();
                                 break;
@@ -98,9 +101,11 @@ public class Controleur {
                             case 2:
                                 modifProjet();
                                 break;
-                            case 3: //recherProjet();
+                            case 3:
+                                rechercheProjet();
                                 break;
-                            case 4: //listeProjet();
+                            case 4:
+                                listeProjet();
                                 break;
                             case 5: //suppProjet();
                                 break;
@@ -185,24 +190,51 @@ public class Controleur {
         return pm.getClient(cRech);
     }
 
+    private void rechercheClient() {
+        Client cli = pv.formRechClient();
+        pv.affMsg(pm.getClient(cli));
+    }
+
     public Membre rechMembre() {
         Membre mRech = pv.formRechMembre();
         return pm.getMembre(mRech);
+    }
+
+    private void rechercheMembre() {
+        Client cli = pv.formRechClient();
+        pv.affMsg(pm.getClient(cli));
     }
 
     public Projet rechProjet() {
         Projet pRech = pv.formRechProjet();
         return pm.getProjet(pRech);
     }
-    /*
-    public void listeClients() {
+
+    private void rechercheProjet() {
+        Projet pj = pv.formRechProjet();
+        pv.affMsg(pm.getProjet(pj));
+    }
+
+    public void listeClient() {
         List<Client> lc = pm.tousClients();
         pv.affListe(lc);
     }
 
-    public void listeMembres() {
-        List<Membres> lm = pm.tousMembres();
+    /*
+    public void listeMembre() {
+        List<Membre> lm = pm.tousMembre();
         pv.affListe(lm);
     }
      */
+    public void listeProjet() {
+        List<Projet> lp = pm.tousProjets();
+        pv.affListe(lp);
+    }
+
+    private void supprimerClient() {
+        Client aDel = pv.formRechClient();
+        Client sec = pm.getClient(aDel);
+        pv.affMsg(sec);
+        pv.affMsg(pm.suppC(sec));
+    }
 }

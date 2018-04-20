@@ -14,6 +14,7 @@ public class Main {
 
         pjv = new ProjetVue();
         pjm = new ProjetModele();
+        pjm.populate();
         ct = new Controleur(pjm, pjv);
         ct.gestion();
 

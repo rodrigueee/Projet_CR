@@ -14,6 +14,7 @@ public class Projet {
     protected String titre = "";
     protected String dated = "";
     protected String datef = "";
+    protected double coutMax=0;
     //protected ArrayList<Client> cli = new ArrayList();
     private Client cli;
 
@@ -22,6 +23,13 @@ public class Projet {
 
     public Projet(String titre) {
         this.titre = titre;
+
+    }
+
+    public Projet(String titre, String dated, String datef) {
+        this.titre = titre;
+        this.dated = dated;
+        this.datef = datef;
 
     }
 
@@ -87,6 +95,10 @@ public class Projet {
      */
     public void setDatef(String datef) {
         this.datef = datef;
+    }
+
+    void setCoutMax(double coutMax) {
+        this.coutMax=coutMax;
     }
 
     @Override
